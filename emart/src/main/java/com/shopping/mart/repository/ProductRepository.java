@@ -18,10 +18,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
 	List<ProductEntity> findAllByRating(int rating);
 
-	List<ProductEntity> findAllByUserId(Long userId);
-
 	
 
-	
 
 }

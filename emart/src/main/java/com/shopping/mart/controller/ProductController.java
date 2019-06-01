@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shopping.mart.model.Product;
 import com.shopping.mart.service.ProductService;
+import com.shopping.mart.service.RatingService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,6 +23,9 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+
+	@Autowired
+	private RatingService ratingServce;
 	
 	@GetMapping("/products/list")
 	public List<Product> get()
@@ -65,6 +69,12 @@ public class ProductController {
 	public List<Product> filterDatabyAvl()
 	{
 		return productService.filterByAvailabilty();
+	}
+	
+	@PostMapping("/products/pid:{pid}/rating:{rating}")
+	public String addRating(@PathVariable Long pid, @PathVariable Integer rating)
+	{
+		return ratingServce.addRating(pid, rating);
 	}
 	
 	

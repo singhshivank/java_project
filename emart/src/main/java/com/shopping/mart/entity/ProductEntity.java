@@ -6,7 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name="products")
@@ -24,11 +27,17 @@ public class ProductEntity {
 	private String category;
 	
 	@NotNull
+	@Min(0)
+	@Max(9999)
 	private Integer price;
 	
 	@NotNull
+	@Min(0)
+	@Max(999)
 	private Integer quantity; 
-	
+
+	@Min(0)
+	@Max(5)
 	private Integer rating;
 	
 	@NotNull

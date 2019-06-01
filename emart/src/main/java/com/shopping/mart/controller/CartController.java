@@ -21,13 +21,13 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 	
-//	@GetMapping("/cart/{userId}")
-//	public List<Cart> getCartByUser(@PathVariable Long userId)
-//	{
-//		return cartService.getCart(userId);
-//	}
+	@GetMapping("/cart/{userId}")
+	public List<Cart> getCartByUser(@PathVariable Long userId)
+	{
+		return cartService.getCart(userId);
+	}
 	
-	@PostMapping("cart/{userId}/{productId}")
+	@PostMapping("/cart/{userId}/{productId}")
 	public void setProduct(@PathVariable Long userId, @PathVariable Long productId)
 	{
 		cartService.setCart(userId, productId);

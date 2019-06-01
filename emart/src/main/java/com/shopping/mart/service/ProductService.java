@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopping.mart.entity.ProductEntity;
-import com.shopping.mart.mapper.ProductMapping;
 import com.shopping.mart.model.Product;
 import com.shopping.mart.repository.ProductRepository;
 
@@ -20,15 +19,21 @@ public class ProductService {
 	
 	public void setProducts(Product product)
 	{
-		ProductEntity productEntity = new ProductEntity();
-		productEntity.setName(product.getName());
-		productEntity.setCategory(product.getCategory());
-		productEntity.setPrice(product.getPrice());
-		productEntity.setQuantity(product.getQuantity());
-		productEntity.setType(product.getType());
-		productEntity.setRating(product.getRating());
-		
-		productRepo.save(productEntity);
+		try {
+			ProductEntity productEntity = new ProductEntity();
+			productEntity.setName(product.getName());
+			productEntity.setCategory(product.getCategory());
+			productEntity.setPrice(product.getPrice());
+			productEntity.setQuantity(product.getQuantity());
+			productEntity.setType(product.getType());
+			productEntity.setRating(product.getRating());
+			
+			productRepo.save(productEntity);
+		}
+		catch(Exception e)
+		{
+			System.out.printf("Posting null value to the product details" ,e.getMessage());
+		}
 		
 	}
 	
